@@ -165,7 +165,7 @@ router.post('/order/prepare', async (req: Request, res: Response) => {
 
 router.post('/order/:id/approve', async (req: Request, res: Response) => {
   try {
-    const orderId = parseInt(req.params.id, 10);
+    const orderId = parseInt(req.params.id as string, 10);
     updateOrderStatus(orderId, 'approved');
     res.json({ success: true, status: 'approved' });
   } catch (error) {
@@ -176,7 +176,7 @@ router.post('/order/:id/approve', async (req: Request, res: Response) => {
 
 router.post('/order/:id/submit', async (req: Request, res: Response) => {
   try {
-    const orderId = parseInt(req.params.id, 10);
+    const orderId = parseInt(req.params.id as string, 10);
     const success = await scraper.submitOrder();
 
     if (success) {
@@ -197,7 +197,7 @@ router.post('/order/:id/submit', async (req: Request, res: Response) => {
 
 router.post('/order/:id/cancel', async (req: Request, res: Response) => {
   try {
-    const orderId = parseInt(req.params.id, 10);
+    const orderId = parseInt(req.params.id as string, 10);
     updateOrderStatus(orderId, 'cancelled');
     res.json({ success: true, status: 'cancelled' });
   } catch (error) {

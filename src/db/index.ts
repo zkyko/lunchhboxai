@@ -184,6 +184,7 @@ export function getRecommendation(date: string): Recommendation | null {
       restaurantId: '',
       description: '',
       price: 0,
+      available: true,
       score: row.top_pick_score as number,
       scoreBreakdown: {
         proteinScore: 0,
