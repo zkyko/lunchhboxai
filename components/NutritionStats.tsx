@@ -17,22 +17,22 @@ export function NutritionStats({ apiBase }: NutritionStatsProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchStats();
-  }, []);
-
-  async function fetchStats() {
-    try {
-      const res = await fetch(`${apiBase}/api/nutrition/stats?days=7`);
-      if (res.ok) {
-        const data = await res.json();
-        setStats(data.stats || []);
+    async function fetchStats() {
+      try {
+        const res = await fetch(`${apiBase}/api/nutrition/stats?days=7`);
+        if (res.ok) {
+          const data = await res.json();
+          setStats(data.stats || []);
+        }
+      } catch (err) {
+        console.error('Failed to fetch stats:', err);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error('Failed to fetch stats:', err);
-    } finally {
-      setLoading(false);
     }
-  }
+    fetchStats();
+  }, [apiBase]);
+
 
   const avgCalories =
     stats.length > 0

@@ -24,22 +24,21 @@ export function OrderHistory({ apiBase }: OrderHistoryProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchOrders();
-  }, []);
-
-  async function fetchOrders() {
-    try {
-      const res = await fetch(`${apiBase}/api/orders`);
-      if (res.ok) {
-        const data = await res.json();
-        setOrders(data.orders || []);
+    async function fetchOrders() {
+      try {
+        const res = await fetch(`${apiBase}/api/orders`);
+        if (res.ok) {
+          const data = await res.json();
+          setOrders(data.orders || []);
+        }
+      } catch (err) {
+        console.error('Failed to fetch orders:', err);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      console.error('Failed to fetch orders:', err);
-    } finally {
-      setLoading(false);
     }
-  }
+    fetchOrders();
+  }, [apiBase]);
 
   const statusColors: Record<string, string> = {
     pending: 'bg-yellow-100 text-yellow-800',

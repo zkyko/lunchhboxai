@@ -3,7 +3,6 @@ import { getPage, closeBrowser, saveSession, loadSession } from './browser.js';
 import { config } from '../config/env.js';
 import { Restaurant, MenuItem, ScrapedMenu } from '../types/index.js';
 import * as fs from 'fs';
-import * as path from 'path';
 
 const LUNCHDROP_URL = 'https://www.lunchdrop.com';
 const SESSION_PATH = './data/lunchdrop-session.json';

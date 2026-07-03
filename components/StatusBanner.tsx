@@ -33,7 +33,7 @@ export function StatusBanner({ status }: StatusBannerProps) {
         <div className="flex items-center justify-between">
           <div>
             <p className="font-medium">
-              Today's Order: {status.order.itemName}
+              Today&apos;s Order: {status.order.itemName}
             </p>
             <p className="text-sm opacity-80">
               from {status.order.restaurantName}

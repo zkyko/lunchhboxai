@@ -148,7 +148,7 @@ export default function Home() {
               : 'bg-white text-gray-700 hover:bg-gray-100'
           }`}
         >
-          Today's Pick
+          Today&apos;s Pick
         </button>
         <button
           onClick={() => setActiveTab('history')}
